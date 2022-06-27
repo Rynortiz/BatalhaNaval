@@ -1,4 +1,8 @@
 let tamanhoNavio;
+
+
+
+
 let coordenada;
 let tabela;
 function Tabela() {
