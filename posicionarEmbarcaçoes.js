@@ -84,25 +84,21 @@ function Posicionamento(tab, tamanhoNavio) {
   let jogando = true;
   while (jogando) {
     let [linha, coluna, direçao] = Coordenada(coordenada);
-    if ((coluna != 4)
-      || (tamanhoNavio <= 3 && coluna != 3)
-      || (tamanhoNavio != 4 && coluna <= 2)) {
-      if (direçao == "H") {
+    if (direçao == "H") {
+      if (linha + tamanhoNavio <= 4) {
         for (let i = 0; i < tamanhoNavio; i++) {
           tab[linha][coluna] = "X";
           tab[linha][coluna + i] = "X";
-        };
+        }
         break;
       }
       else {
         console.log("Tente novamente!\nVocê não pode colocar um navio na horizontal nesta posição!")
         continue;
       };
-    };
-    if ((linha != 4)
-      || (tamanhoNavio <= 3 && linha != 3)
-      || (tamanhoNavio != 4 && linha <= 2)) {
-      if (direçao == "V") {
+    }
+    else if (direçao == "V") {
+      if (linha + tamanhoNavio <= 4) {
         for (let i = 0; i < tamanhoNavio; i++) {
           tab[linha][coluna] = "X";
           tab[linha + i][coluna] = "X";
@@ -113,25 +109,14 @@ function Posicionamento(tab, tamanhoNavio) {
         console.log("Tente novamente!\nVocê não pode colocar um navio na vertical nesta posição!")
         continue;
       };
+    }
+    else {
+      console.log("Direção inválida!\nTente novamente!")
     };
   };
   return tab;
 };
-
 tabela = Tabela();
 tamanhoNavio = NavioX(tamanhoNavio);
 tabela = Posicionamento(tabela, tamanhoNavio);
 console.table(tabela);
-// tabela = Tabela();
-// console.table(tabela);
-tamanhoNavio = NavioX(tamanhoNavio);
-tabela = Posição()
-console.table(tabela);
-
-// let posicionar = require ("./posicionarEmbarcaçoes.js");
-// posicionar.Posicionamento(tab, tamanhoNavio);
-
-// Por RenatoTonelli 22jun-1600 - criando uma simples chamada para apresentacao do jogo
-module.exports = {
-  "posicionar":NavioX
-}
